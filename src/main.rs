@@ -232,9 +232,9 @@ fn main() {
 
                     if let Some((ref window, _)) = overlay_window {
                         window.set_outer_position(LogicalPosition::new(pos_x, pos_y));
-                        window.set_opacity(1.0);
+                        //window.set_opacity(1.0);
                         window.set_visible(true);
-                        window.focus_window();
+                        //window.focus_window();
                     } else {
                         // Create the exact Google Books style floating window
                         let window = WindowBuilder::new()
@@ -247,7 +247,7 @@ fn main() {
                             .unwrap();
 
                         // Create the WebView connecting to Gemini with login persistence
-                        let webview = WebViewBuilder::new()
+                        let webview = WebViewBuilder::new(&window)
                             .with_transparent(true)
                             .with_data_directory(Some(data_dir.clone())) // Retains Google Logins
                             .with_initialization_script(gemini_css_injection) // Applies the blue moving blur
@@ -255,7 +255,9 @@ fn main() {
                             .build(&window)
                             .unwrap();
 
-                        overlay_window = Some((window, webview));
+                        let webview = WebViewBuilder::new(&window)
+    .with_transparent(true)
+    .build()?;
                     }
                 }
                 AppEvent::CursorLeftBounds => {
