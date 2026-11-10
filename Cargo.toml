@@ -1,0 +1,12 @@
+[package]
+name = "g-shake"
+version = "1.0.0"
+edition = "2021"
+# This prevents the black command-line terminal from opening on Windows
+rustflags = ["-C", "windows_subsystem=windows"]
+
+[dependencies]
+tao = "0.30"
+wry = "0.45"
+rdev = "0.5"
+tray-icon = "0.19"
