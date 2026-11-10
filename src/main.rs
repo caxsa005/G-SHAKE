@@ -271,7 +271,7 @@ fn main() {
                 }
                 AppEvent::FadeOutStep(alpha) => {
                     if let Some((ref window, _)) = overlay_window {
-                        window.set_opacity(alpha);
+                        //window.set_opacity(alpha);
                         if alpha <= 0.0 {
                             window.set_visible(false);
                         }
